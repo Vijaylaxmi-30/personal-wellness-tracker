@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   LayoutDashboard, 
@@ -7,9 +8,13 @@ import {
   Trophy,
   Brain,
   ChartBar,
-  Settings
+  Settings,
+  Sun,
+  Moon
 } from "lucide-react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { Switch } from "@/components/ui/switch";
 import vitalsyncLogo from "@/assets/vitalsync-logo.png";
 
 interface NavItem {
@@ -34,6 +39,17 @@ interface SidebarProps {
 }
 
 export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <motion.aside
       initial={{ x: -100, opacity: 0 }}
@@ -83,8 +99,23 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         })}
       </nav>
 
-      {/* Settings */}
-      <div className="p-4 border-t border-border/50">
+      {/* Theme Toggle & Settings */}
+      <div className="p-4 border-t border-border/50 space-y-2">
+        {/* Theme Toggle */}
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary/50">
+          <Sun className="w-5 h-5 text-yellow-500 flex-shrink-0" />
+          <span className="hidden lg:block font-medium flex-1">Theme</span>
+          {mounted && (
+            <Switch
+              checked={resolvedTheme === 'dark'}
+              onCheckedChange={toggleTheme}
+              className="data-[state=checked]:bg-primary"
+            />
+          )}
+          <Moon className="w-5 h-5 text-blue-400 flex-shrink-0 hidden lg:block" />
+        </div>
+
+        {/* Settings Button */}
         <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-muted-foreground hover:bg-secondary hover:text-foreground transition-all duration-200">
           <Settings className="w-5 h-5" />
           <span className="hidden lg:block font-medium">Settings</span>

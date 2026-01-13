@@ -1,5 +1,7 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Bell, Search, Flame, LogOut } from "lucide-react";
+import { Bell, Search, Flame, LogOut, Sun, Moon, Monitor, Check } from "lucide-react";
+import { useTheme } from "next-themes";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,7 +24,14 @@ interface HeaderProps {
 
 export function Header({ streak, level, xp, xpToNext }: HeaderProps) {
   const { user, logout } = useAuth();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const xpProgress = (xp / xpToNext) * 100;
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const getInitials = (name: string) => {
     return name
@@ -77,6 +86,56 @@ export function Header({ streak, level, xp, xpToNext }: HeaderProps) {
             <span className="font-display font-bold text-primary">{level}</span>
           </div>
         </div>
+
+        {/* Theme Toggle */}
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="ghost" size="icon" className="relative">
+              {mounted ? (
+                resolvedTheme === 'dark' ? (
+                  <Moon className="h-5 w-5" />
+                ) : (
+                  <Sun className="h-5 w-5" />
+                )
+              ) : (
+                <div className="h-5 w-5" />
+              )}
+              <span className="sr-only">Toggle theme</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem 
+              onClick={() => setTheme("light")} 
+              className="cursor-pointer flex items-center justify-between"
+            >
+              <div className="flex items-center">
+                <Sun className="mr-2 h-4 w-4" />
+                Light
+              </div>
+              {theme === "light" && <Check className="h-4 w-4 text-primary" />}
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => setTheme("dark")} 
+              className="cursor-pointer flex items-center justify-between"
+            >
+              <div className="flex items-center">
+                <Moon className="mr-2 h-4 w-4" />
+                Dark
+              </div>
+              {theme === "dark" && <Check className="h-4 w-4 text-primary" />}
+            </DropdownMenuItem>
+            <DropdownMenuItem 
+              onClick={() => setTheme("system")} 
+              className="cursor-pointer flex items-center justify-between"
+            >
+              <div className="flex items-center">
+                <Monitor className="mr-2 h-4 w-4" />
+                System
+              </div>
+              {theme === "system" && <Check className="h-4 w-4 text-primary" />}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
         {/* Notifications */}
         <Button variant="ghost" size="icon" className="relative">
