@@ -2,10 +2,16 @@
 
 A comprehensive health and fitness tracking platform with AI-powered meal analysis, BMI calculator, activity monitoring, and gamification features.
 
-![VitalSync Logo](<img width="65" height="67" alt="image" src="https://github.com/user-attachments/assets/a9818de5-a647-46da-bfe4-71dbc22d0258" />
+## 🚀 Live Demo
 
+🔗 **Website:** https://personal-wellness-tracker-chi.vercel.app/auth
 
-)
+👉 Try the application here:
+https://personal-wellness-tracker-chi.vercel.app/auth
+
+![VitalSync Logo](https://github.com/user-attachments/assets/a9818de5-a647-46da-bfe4-71dbc22d0258)
+
+<img width="1321" height="913" alt="image" src="https://github.com/user-attachments/assets/99153c7c-2988-4a72-b22f-260fc0a82d7b" />
 <img width="1321" height="913" alt="image" src="https://github.com/user-attachments/assets/99153c7c-2988-4a72-b22f-260fc0a82d7b" />
 ## Features
 
