@@ -6,8 +6,6 @@ A comprehensive health and fitness tracking platform with AI-powered meal analys
 
 🔗 **Website:** https://personal-wellness-tracker-chi.vercel.app/auth
 
-👉 Try the application here:
-https://personal-wellness-tracker-chi.vercel.app/auth
 
 ![VitalSync Logo](https://github.com/user-attachments/assets/a9818de5-a647-46da-bfe4-71dbc22d0258)
 
