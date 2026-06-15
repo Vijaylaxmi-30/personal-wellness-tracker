@@ -116,6 +116,7 @@ personal-wellness-tracker/
 ```
 
 ## Screenshots
+<img width="1057" height="489" alt="image" src="https://github.com/user-attachments/assets/020db96a-449d-42b7-946b-b4b4dfe6edae" />
 
 
 
