@@ -2,7 +2,8 @@
 
 A comprehensive health and fitness tracking platform with AI-powered meal analysis, BMI calculator, activity monitoring, and gamification features.
 
-![VitalSync Logo](src/assets/vitalsync-logo.png)
+![VitalSync Logo](<img width="155" height="48" alt="image" src="https://github.com/user-attachments/assets/fcca87e6-5620-4319-9b76-eed07876b5fd" />
+)
 
 ## Features
 
